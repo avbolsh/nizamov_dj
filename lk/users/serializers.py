@@ -1,6 +1,6 @@
 import uuid
-from .models import CustomUser
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 
 
 class CustomUserSerilizer(serializers.ModelSerializer):
@@ -9,7 +9,7 @@ class CustomUserSerilizer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
     class Meta:
-        model = CustomUser
+        model = get_user_model()
         fields = ["id", "username", "snils", "inn",  "birthday", "password", "first_name", "last_name", "surname"]
 
     def create(self, validated_data):
@@ -25,3 +25,9 @@ class CustomUserSerilizer(serializers.ModelSerializer):
         except KeyError:
             pass
         return user 
+
+class ProfileCustomUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = get_user_model()
+        fields = ["username", "first_name", "last_name", "surname", "snils", "inn", "birthday",]
