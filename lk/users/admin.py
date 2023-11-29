@@ -15,11 +15,11 @@ class CustomUserAdmin(UserAdmin):
     list_display = ["username", "inn", "snils", "birthday"]
 
     fieldsets = UserAdmin.fieldsets + (
-        ("Реквизиты 1С", {"fields": ("snils", "inn", "birthday")}),
+        ("Реквизиты 1С", {"fields": ("snils", "inn", "birthday", "surname")}),
     )
 
     add_fieldsets = UserAdmin.add_fieldsets + (
-        ("Реквизиты 1С", {"fields": ("snils", "inn", "birthday")}),
+        ("Реквизиты 1С", {"fields": ("snils", "inn", "birthday", "surname",)}),
     )
 
     search_fields = ("snils", "inn", "birthday")
